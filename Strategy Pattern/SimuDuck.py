@@ -20,6 +20,10 @@ class NoFly(FlyBehavior):
     def fly(self):
         print("I can't fly.")
 
+class RocketFly(FlyBehavior):
+    def fly(self):
+        print("I am flying like a rocket.")
+
 # Implementations of QuackBehavior
 class Quack(QuackBehavior):
     def quack(self):
@@ -44,13 +48,33 @@ class Duck:
     def swim(self):
         print("All ducks float, even decoys!")
 
+    def set_fly_behavior(self, fb):
+        self.fly_behavior = fb
+    
+    def set_quack_behavior(self, qb):
+        self.quack_behavior = qb
+
 # MallardDuck using FlyWithWings and Quack behaviors
 class MallardDuck(Duck):
     def __init__(self):
         super().__init__(FlyWithWings(), Quack())
+    
+class ModelDuck(Duck):
+    def __init__(self):
+        super().__init__(NoFly(), Quack())
+    
+    def display(self):
+        print("I am a Model Duck!")
 
 # Run the simulation
 mallard = MallardDuck()
 mallard.perform_fly()  # Output: I'm flying with wings!
 mallard.perform_quack()  # Output: Quack!
 mallard.swim()  # Output: All ducks float, even decoys!
+
+
+# Dynamically change implementation at runtime
+model_duck = ModelDuck()
+model_duck.perform_fly()
+model_duck.set_fly_behavior(RocketFly())
+model_duck.perform_fly()
