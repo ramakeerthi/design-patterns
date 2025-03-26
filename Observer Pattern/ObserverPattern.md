@@ -11,4 +11,8 @@ The Observer Pasttern:
     your subscription, you will not get any more issues however other subscribers will continue
     to get magazines.
 
+-   The Subject contains the state and controls it, so there is one SUBJECT with state. The Observers,
+    however use the state even though they don't own it. There can be many observers hence the ONE-TO-MANY
+    relationship.
+
 
