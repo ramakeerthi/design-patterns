@@ -19,7 +19,7 @@ class Subject(ABC):
 
 class Observer(ABC):
     @abstractmethod
-    def update(self, temperature, humidity, pressure):
+    def update():
         pass
 
 class DisplayElement(ABC):
@@ -47,7 +47,7 @@ class WeatherData(Subject):
     
     def notify_observers(self):
         for observer in self.observers:
-            observer.update(self.temperature, self.humidity, self.pressure)
+            observer.update()
     
     def set_measurements(self, temperature, humidity, pressure):
         self.temperature = temperature
@@ -63,10 +63,9 @@ class CurrentConditionsDisplay(Observer, DisplayElement):
         self.weather_data = weather_data
         self.weather_data.register_observer(self)
     
-    def update(self, temperature, humidity, pressure):
-        self.temperature = temperature
-        self.humidity = humidity
-        self.pressure = pressure
+    def update(self):
+        self.temperature = weather_data.temperature
+        self.humidity = weather_data.humidity
         self.display()
     
     def display(self):
