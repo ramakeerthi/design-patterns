@@ -70,8 +70,32 @@ class CurrentConditionsDisplay(Observer, DisplayElement):
     
     def display(self):
         print(f"Current conditions: {self.temperature} celsius, {self.humidity} humidity")
+    
+class PressureDisplay(Observer, DisplayElement):
+    def __init__(self, weather_data):
+        self.temperature = 0.0
+        self.humidity = 0.0
+        self.pressure = 0.0
+        self.weather_data = weather_data
+        self.weather_data.register_observer(self)
+    
+    def update(self):
+        self.pressure = weather_data.pressure
+        self.display()
+    
+    def display(self):
+        print(f"High pressure {self.pressure}")
 
 
 weather_data = WeatherData()
 current_dispaly = CurrentConditionsDisplay(weather_data)
+pressure_display = PressureDisplay(weather_data)
+
 weather_data.set_measurements(25,85,1012)
+weather_data.set_measurements(35,95,1000)
+
+# Outputs:
+# Current conditions: 25 celsius, 85 humidity
+# High pressure 1012
+# Current conditions: 35 celsius, 95 humidity
+# High pressure 1000
