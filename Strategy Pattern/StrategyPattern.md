@@ -1,4 +1,4 @@
-The Strategy Pasttern:
+The Strategy Pattern:
 
     Defines a family of algorithms, encapsulates each one, and makes them interchangable.
     ** Strategy lets the algo vary independently form the clients that use them.
