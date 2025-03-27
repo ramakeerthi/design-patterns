@@ -15,4 +15,12 @@ The Observer Pattern:
     however use the state even though they don't own it. There can be many observers hence the ONE-TO-MANY
     relationship.
 
+-   How does the observer pattern use the design principles,
+
+    1.	Favor Composition Over Inheritance – The Observer pattern uses composition to manage relationships instead 
+        of relying on hierarchical inheritance.
+	2.	Program to an Interface, Not an Implementation – Both Subject and Observer use interfaces, ensuring loose
+        coupling and flexibility in the design.
+	3.	Identify and Separate Changing Aspects – The Observer pattern allows changes in dependent objects without
+        modifying the Subject, promoting better maintainability.
 
